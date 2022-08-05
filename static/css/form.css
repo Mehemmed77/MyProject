@@ -1,0 +1,126 @@
+.main-form{
+    background-color: var(--dark-blue-color);
+    border-radius: 8px;
+}
+
+.input-container{
+    flex-direction: column;
+    margin-top: 40px;
+    gap:30px;
+}
+
+.form-title{
+    color:#ebedf2;
+    font-size: 18px;
+}
+
+.input-label{
+    color:#acb0c3;
+    font-weight: 300;
+}
+
+input:focus,textarea:focus,input:disabled:focus{
+    box-shadow: none !important;
+    border:2px solid #1b2e4b !important;
+    background-color: #1b2e4b !important;
+    outline: none;
+}
+
+button:hover{
+    border: 1px solid #1b55e2 !important;
+    color:white !important;
+    background-color: #1b55e2 !important;
+}
+
+.input-container input,.input-container textarea,.input-container input:disabled{
+    transition: 300ms;
+    opacity: 0.75;
+    font-size:15px;
+    color:#08b8a6cb ;
+    caret-color: #08b8a6;
+}
+
+.input-container textarea{
+    min-height: 217px;
+}
+
+input::placeholder,textarea::placeholder{
+    transition: 300ms;
+    color:rgba(255, 255, 255, 0.774) !important;
+}
+
+input:focus,textarea:focus{
+    color:#10b9a8 !important;
+    opacity:1;
+}
+
+.input-container input,.input-container textarea,.input-container input:disabled{
+    border:2px solid #1b2e4b;
+    background-color: #1b2e4b;
+    padding:10px 10px 10px 24px !important;
+}
+
+
+.input-span{
+    border: 1px solid #16243a !important;
+    background-color: #16243a !important;
+}
+
+.input-container i{
+    color: #888ea8;
+}
+
+.report-btn{
+    padding:7px 15px !important;
+    transition: 400ms;
+    float: right;
+    align-items: center;
+    gap:7px;
+    border: 1px solid #1b55e2 !important;
+    background-color: #1b55e2;
+    color:white;
+    font-weight: 300;
+    font-size:14px;
+    box-shadow: 0 10px 20px -10px rgba(27, 85, 226, 0.59);
+}
+
+.report-btn i{
+    font-size:11px;
+    color: #1b55e2;
+    background-color: white;
+    padding:2px;
+    border-radius: 50%;
+}
+
+.report-btn:hover{
+    transform: translateY(-3px);
+    padding-inline: 15px !important;
+    box-shadow: none;
+}
+
+.submit-btn{
+    display: block;
+    margin-top:1em;
+}
+
+.errorlist{
+    color:#d82525;
+    font-weight: 450;
+    margin-top:-0.5rem;
+    margin-bottom:0;
+}
+
+.error-container{
+    color: var(--light-cyan-color);
+    color:#d82525;
+    font-weight: 500;
+    margin-top:1em;
+    align-items: center;
+    justify-content: center;
+    /* background-color: #1b2e4b; */
+    border-radius: 8px;
+}
+
+.error-container > div{
+    padding:20px;
+}

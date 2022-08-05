@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block main %}
+    <div class="info">
+        <div class="info-content">
+            <div class="icon-container flex icon-container-1">
+                <i class="fa-solid fa-user-group icon"></i>
+            </div>
+            <p class="info-count">1801</p>
+            <p class="info-title">Hacktvist</p>
+        </div>
+
+        <div class="info-content">
+            <div class="icon-container flex icon-container-2">
+                <i class="fa-solid fa-dollar-sign icon"></i>
+            </div>
+            <p class="info-count">3212</p>
+            <p class="info-title">Special Archive</p>
+        </div>
+
+        <div class="info-content">
+            <div class="icon-container flex icon-container-3">
+                <i class="fa-solid fa-inbox icon"></i>
+            </div>
+            <p class="info-count">99937</p>
+            <p class="info-title">Total Archive</p>
+        </div>
+
+        <div class="info-content">
+            <div class="icon-container flex icon-container-4">
+                <i class="fa-regular fa-clipboard icon"></i>
+            </div>
+            <p class="info-count">16949</p>
+            <p class="info-title">Onhold</p>
+        </div>
+
+    </div>
+
+    <div class="images-container flex">
+
+        <a href="#">
+            <img src="{% static 'images/hack1.jpg' %}" alt="hacker image1">
+        </a>
+
+        <a href="#">
+            <img src="{% static 'images/hack2.gif' %}" alt="hacker image2">
+        </a>
+
+        <a href="#">
+            <img src="{% static 'images/hack3.jpg' %}" alt="hacker image3">
+        </a>
+
+    </div>
+
+    {% block table2 %}
+    {% endblock table2 %}
+
+{% endblock main %}

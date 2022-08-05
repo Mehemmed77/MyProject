@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
+<link rel="stylesheet" href="{% static 'css/password_reset.css' %}">
+{% endblock style %}
+
+{% block main %}
+
+<form action="{% url 'type-email' %}" class="main-form" method="post">
+    {% csrf_token %}
+    <h2 class="form-title">
+        Type Your Email To Retrieve 6 Digit Number
+    </h2>
+
+    <div class="input-container flex">
+        <div>
+            <label for="" class="input-label">
+                Type Email
+            </label>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text input-span" id="basic-addon1">
+                    <i class="fa-solid fa-at"></i>
+                </span>
+
+                {{ form.email }}
+            </div>
+            {% if form.email.errors %}
+                {{ form.email.errors }}
+            {% endif %}
+        </div>
+
+        <div class="btn-container flex">
+            <button class="btn report-btn submit-btn flex" type="submit">
+                <i class="fa-solid fa-arrow-right"></i>
+                Send Code
+            </button>
+        </div>
+
+    </div>
+</form>
+
+{% endblock main %}
+
+{% block table1 %}
+{% endblock table1 %}
+
+{% block table2 %}
+{% endblock table2 %}

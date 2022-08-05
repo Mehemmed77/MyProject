@@ -1,0 +1,38 @@
+.icon-container{
+    justify-content: center;
+    align-items: center;
+    color:white;
+    width:40px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    margin-block:14px;
+}
+
+.icon-container-1{
+    background-color:hsl(216, 47%, 20%);
+}
+.icon-container-2{
+    background-color: hsl(223, 79%, 50%);
+}
+.icon-container-3{
+    background-color: hsl(356, 76%, 61%);
+}
+.icon-container-4{
+    background-color: hsl(174, 100%, 29%);
+}
+
+.check-icon{
+    margin-left: 6px;
+    transition: 500ms;
+    padding:5px;
+    border-radius: 50%;
+    background-color: #007bff;
+}
+
+.check-icon:hover{
+    transform: translateY(-3px);
+}
+
+.icon-container i{
+    font-size:18px;
+}

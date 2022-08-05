@@ -1,0 +1,16 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=hacker_site
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_DB=mydb
+
+  admin:
+    image: adminer
+    ports:
+      - 8080:8080

@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/settings.css' %}">
+{% endblock style %}
+
+{% block main %}
+<form action="{% url 'settings' user.id %}" class="main-form flex" enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+    <div class="profile-image-container">
+        
+        {{ form.image }}
+
+        <div class="flex labels-container">
+           <p class="info-text">Your Picture <i class="fa-solid fa-file-image"></i></p>
+            <label for="id_image" class="image-trigger">
+                <img src="{{ user.image.url }}" alt="your image" class="profile-image" 
+                width="250" height="250">
+            </label>
+            <label for="id_image" class="image-trigger">
+                <p class="blue-link-text">Tap To Change Profile Picture</p>
+            </label>
+        </div>
+
+    </div>
+
+    
+    <div class="input-container flex">
+        <p class="info-text">Your Info <i class="fa-solid fa-circle-info"></i></p>
+        <div>
+            <label class="input-label">Your Username</label>
+            <div class="input-group flex-nowrap">
+                <span class="input-group-text input-span" id="addon-wrapping">
+                    <i class="fa-regular fa-user"></i>
+                </span>
+                
+                {{ form.username }}
+
+                <!-- <input type="text" class="form-control" placeholder="Name" aria-label="Username" aria-describedby="addon-wrapping"> -->
+            </div>
+        </div>
+
+        <div>
+            <label class="input-label">Your Bio</label>
+            <div class="input-group flex-nowrap">
+                <span class="input-group-text input-span" id="addon-wrapping">
+                    <i class="fa fa-align-left"></i>
+                </span>
+                
+                {{ form.bio }}
+
+                <!-- <input type="text" class="form-control" placeholder="Name" aria-label="Username" aria-describedby="addon-wrapping"> -->
+            </div>
+        </div>
+
+        <div>
+            <label class="input-label">Your Email</label>
+            <div class="input-group flex-nowrap">
+                <span class="input-group-text input-span" id="addon-wrapping">
+                    <i class="fa-regular fa-envelope"></i>
+                </span>
+
+                <input type="email" class="form-control" disabled placeholder="Your Email" 
+                aria-label="Username" aria-describedby="addon-wrapping"
+                value="{{ user.email }}">
+            </div>
+        </div>
+
+        <div class="inner-information">
+            <p class="change-password">Tap This 
+                <a href="{% url 'change-password' %}" class="blue-link-text">Link To Change Your Password</a>
+            </p>
+
+            <button class="report-btn btn flex save-changes" type="submit">
+                <i class="fa-solid fa-arrow-right"></i>
+                <span>Save Changes</span>
+            </button>
+        </div>
+    </div>
+
+</form>
+{% endblock main %}
+
+{% block table1 %}
+{% endblock table1 %}
+
+{% block table2 %}
+{% endblock table2 %}
+
+
+{% block js %}
+
+<script src="{% static 'js/image.js' %}"></script>
+
+{% endblock js %}

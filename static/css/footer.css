@@ -1,0 +1,10 @@
+/** FOOTER START */
+
+footer{
+    color:#888ea8;
+    font-size:13px;
+    margin-inline: var(--my-margin-inline);
+    margin-bottom:20px;
+}
+
+/** FOOTER END */

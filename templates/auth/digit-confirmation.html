@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/digit-confirmation.css' %}">
+{% endblock style %}
+
+{% block main %}
+
+<form action="" class="main-form" method="post">
+    {% csrf_token %}
+    <div class="inner-form flex">
+        <p class="info-form">We've Sent A 6 Digit Code To 
+            <span class="email">mehemmedkazimzade54@gmail.com</span>
+        </p>
+        {% if error_msg %}
+            <p class="error-msg">{{ error_msg }}</p>
+        {% else %}
+            <p class="info-form">Enter The 6 Digit Code Below To Confirm Your Email Address</p>
+        {% endif %}
+        <div class="input-container">
+            <div><input type="text" class="one-digit" placeholder="0" maxlength="1" name="digit1" required></div>
+            <div><input type="text" class="one-digit" placeholder="0" maxlength="1" name="digit2" required></div>
+            <div><input type="text" class="one-digit" placeholder="0" maxlength="1" name="digit3" required></div>
+            <div><input type="text" class="one-digit" placeholder="0" maxlength="1" name="digit4" required></div>
+            <div><input type="text" class="one-digit" placeholder="0" maxlength="1" name="digit5" required></div>
+            <div><input type="text" class="one-digit" placeholder="0" maxlength="1" name="digit6" required></div>
+        </div>
+        <div class="btn-container">
+            <button class="btn report-btn flex" type="submit">
+                <i class="fa-solid fa-arrow-right"></i>
+                <span>Confirm</span>
+            </button>
+        </div>
+    </div>
+</form>
+
+{% endblock main %}
+
+{% block table1 %}
+{% endblock table1 %}
+
+{% block table2 %}
+{% endblock table2 %}

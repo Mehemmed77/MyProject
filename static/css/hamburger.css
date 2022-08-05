@@ -1,0 +1,40 @@
+#hamburger-modal{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: #2d334b91;
+    /* background-color: rgba(0,0,0,0.4); */
+}
+
+.hamburger{
+    cursor:pointer;
+    font-size:25px;
+    color:hsla(0, 0%, 98%, 0.692) !important;
+}
+
+.modal-header{
+    justify-content: flex-start;
+    gap:10px;
+    position: relative;
+    left:-100%;
+    padding:15px 15px 15px 15px;
+    background-color: #191e3a;
+    transition: 500ms;
+}
+
+.main-link{
+    font-weight: 600;
+    text-decoration: none;
+    font-size:25px;
+    color:#fafafa !important;
+    line-height: 2.75rem;
+}
+
+.main-link:hover{
+    color:#fafafa
+}

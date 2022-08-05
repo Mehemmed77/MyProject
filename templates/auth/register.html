@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static custom_tags %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
+<link rel="stylesheet" href="{% static 'css/form.css' %}">
+{% endblock style %}
+
+{% block main %}
+
+<form action="{% url 'register' %}" class="main-form" method="post">
+    {% csrf_token %}
+    <h2 class="form-title">Register To Create Account</h2>
+
+    <div class="input-container flex">
+        {% for field in form %}
+            {% find_icon field.name as icon %}
+            <div>
+                {% if field.name != 'password2' %}
+                    <label class="input-label">Your {{ field.name }}</label>
+                {% else %}
+                    <label class="input-label">Confirm your {{ field.name }}</label>
+                {% endif %}
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text input-span" id="basic-addon1">
+                        <i class="fa-solid fa-{{ icon }}"></i>
+                    </span>
+                    {{ field }}
+                </div>
+
+                {% if field.errors %}
+                    {{ field.errors }}
+                {% endif %}
+
+            </div>
+
+        {% endfor %}
+
+        <div class="btn-container flex">
+            <button class="btn report-btn submit-btn flex" type="submit">
+                <i class="fa-solid fa-arrow-right"></i>
+                Register
+            </button>
+            <span class="remind">Already Have An Account? Click
+                <a href="{% url 'login' %}" id="page-link">This Link To Login</a>
+            </span>
+        </div>
+    
+    </div>
+</form>
+
+{% endblock main %}
+
+{% block table1 %}
+{% endblock table1 %}
+
+{% block table2 %}
+{% endblock table2 %}

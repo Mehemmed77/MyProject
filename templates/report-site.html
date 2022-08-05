@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+
+<link rel="stylesheet" href="{% static 'css/report-site.css' %}">
+
+{% endblock style %}
+
+{% block main %}
+    <div class="form-container">
+        <form action="" id="form1">
+            <div class="inner-form-container">
+                <h2>Notify / Report</h2>
+
+                <div class="input-container">
+                    <div class="input-group mb-3">
+                            <span class="input-group-text input-span" id="inputGroup-sizing-default">
+                                <i class="fa-solid fa-hat-cowboy"></i>
+                            </span>
+            
+                            <input type="text" class="form-control" aria-label="Sizing example input" 
+                            aria-describedby="inputGroup-sizing-default" 
+                            placeholder="Attacker(max 30 chars)">
+                        </div>
+        
+                        <div class="input-group mb-3">
+                            <span class="input-group-text input-span" id="inputGroup-sizing-default">
+                                <i class="fa-solid fa-link"></i>
+                            </span>
+
+                            <input type="text" class="form-control" aria-label="Sizing example input" 
+                            aria-describedby="inputGroup-sizing-default"
+                            placeholder="http://ownzyou.com/ (only accepted start with [https/http])">
+                        </div>
+
+                        <button class="btn report-btn flex">
+                            <i class="fa-solid fa-arrow-right"></i>
+                            <span>Report</span>
+                        </button>
+                    </div>
+                </div>
+        </form>
+
+        <form action="" id="form2">
+            <div class="inner-form-container">
+                <h2>Bulk Notify / Report (max 50)</h2>
+                <div class="input-container">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text input-span" id="inputGroup-sizing-default">
+                            <i class="fa-solid fa-hat-cowboy"></i>
+                        </span>
+                        <input type="text" class="form-control" aria-label="Sizing example input" 
+                        aria-describedby="inputGroup-sizing-default"
+                        placeholder="Attacker(max 30 chars)">
+                    </div>
+        
+                    <div class="input-group">
+                        <span class="input-group-text input-span">
+                            <i class="fa-solid fa-link"></i>
+                        </span>
+                        <textarea class="form-control" aria-label="With textarea" rows="5"
+                        placeholder="http://ownzyou.com/ 
+http://ownzyou.com/page 
+http://ownzyou.com/index.php 
+(only accepted start with [https/http])"></textarea>
+                    </div>
+        
+                    <button class="btn report-btn submit-btn flex">
+                        <i class="fa-solid fa-arrow-right"></i>
+                        <span>Submit</span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    {% block table1 %}
+    {% endblock table1 %}
+
+    {% block table2 %}
+    {% endblock table2 %}
+
+{% endblock main %}

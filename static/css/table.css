@@ -1,0 +1,145 @@
+/** ENTRY SEARCH STYLE/DESIGN END ------------------------------------------ */
+
+.entry-search-container{
+    margin-block:30px 15px;
+    gap:35px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.entry-search-container span{
+    letter-spacing: 1px;
+    font-size: 16px;
+    color: #888ea8;
+}
+
+.show,.search-input{
+    background-color: #1b2e4b;
+    border:none;
+}
+
+.show{
+    position: relative;
+    padding:15px 7px 15px 13px;
+    color: var(--light-cyan-color);
+    border-radius: var(--my-border-radius);
+}
+
+.search span{
+    margin-right:7px;
+}
+
+.search-input{
+    --my-border-radius:5px;
+    outline:none;
+    color: var(--light-cyan-color);
+    caret-color: var(--light-cyan-color);
+    border-radius: var(--my-border-radius);
+    padding:5px 0px 5px 15px;
+    max-width: 100%;
+}
+
+.search-input::placeholder{
+    color:white;
+}
+
+/** ENTRY AND SEARCH DESIGN END ------------------------------------- */
+
+
+/** TABLE STYLE/DESIGN START ---------------------------------------- */
+
+.table-container{
+    --my-border-radius:5px;
+    padding:20px 35px;
+    margin-top:4em;
+    overflow:scroll;
+    background-color:#0d1b33;
+    border-radius: var(--my-border-radius);
+    box-shadow: 0 6px 10px 0 rgba(0,0,0,.14),
+    0 1px 18px 0 rgba(0,0,0,.12),
+    0 3px 5px -1px rgba(0,0,0,.2);
+}
+
+tr{
+    transition: 300ms;
+    border-top:1px solid var(--border-color) !important;
+    border-bottom:1px solid var(--border-color) !important;
+}
+
+tr:nth-child(2) > td{
+    padding-top:20px !important;
+}
+
+tr:hover td{
+    opacity: 1;
+}
+
+tr:hover:not(:first-of-type){
+    transform: scale(1.02);
+}
+
+th,td{
+    padding:8px !important;
+    font-family: var(--main-font) !important;
+    letter-spacing: 1.2px;
+    line-height: 1.5;
+}
+
+th{
+    text-transform: uppercase;
+    color: var(--light-cyan-color);
+    font-weight: 700;
+    font-size:14px;
+}
+
+th > span{
+    /* display: block; */
+    vertical-align:sub;
+    cursor: pointer;
+}
+
+td{
+    vertical-align: middle;
+    transition: 500ms;
+    color:#e0e6ed;
+    opacity: 0.85;
+    font-weight:500;
+    font-size: 14px;
+}
+
+.arrow-up-down{
+    margin-left:6px;
+}
+
+.country-code{
+    padding-left:5px
+}
+
+.btn-outline-primary{
+    transition: 600ms !important;
+    padding:7px 18px !important;
+}
+
+.btn-outline-primary:hover{
+    box-shadow: 0 10px 20px -10px rgba(27, 85, 226, 0.59);
+    transform: translateY(-4px);
+}
+
+/** TABLE STYLE/DESIGN END ------------------------------------------ */
+
+/** PAGES CONTAINER STYLE/DESIGN START ------------------------------ */
+
+.pages-container{
+    margin-block:30px;
+}
+
+.showing{
+    font-size: 14px;
+    color: var(--light-cyan-color);
+    padding:10px 16px;
+    border-radius: var(--my-border-radius);
+    border:1px solid var(--border-color);
+    width: fit-content;
+}
+
+/** PAGES CONTAINER STYLE/DESIGN END -------------------------------- */

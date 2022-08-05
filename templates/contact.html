@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+
+<link rel="stylesheet" href="{% static 'css/contact.css' %}">
+
+{% endblock style %}
+
+{% block main %}
+    <form action="" class="main-form">
+        <h2 class="form-title">Contact</h2>
+        <div class="input-container flex">
+            <div>
+                <label class="input-label">Name</label>
+                <div class="input-group flex-nowrap">
+                    <span class="input-group-text input-span" id="addon-wrapping">
+                        <i class="fa-regular fa-user"></i>
+                    </span>
+                    
+                    <input type="text" class="form-control" placeholder="Name" aria-label="Username" aria-describedby="addon-wrapping">
+                </div>
+            </div>
+
+            <div>
+                <label class="input-label">Mail Address</label>
+                <div class="input-group flex-nowrap">
+                    <span class="input-group-text input-span" id="addon-wrapping">
+                        <i class="fa-regular fa-envelope"></i>
+                    </span>
+                    <input type="email" class="form-control" placeholder="Email address" aria-label="Username" aria-describedby="addon-wrapping">
+                </div>
+            </div>
+
+            <div>
+                <label class="input-label">Your message</label>
+                <div class="input-group">
+                    <span class="input-group-text input-span">
+                        <i class="fa-solid fa-link"></i>
+                    </span>
+                    <textarea class="form-control" aria-label="With textarea" rows="5"
+                    placeholder="Message"></textarea>
+                </div>
+            </div>
+
+            <div class="btn-container">
+                <button class="btn report-btn submit-btn flex">
+                    <i class="fa-solid fa-arrow-right"></i>
+                    <span>Submit</span>
+                </button>
+            </div>
+
+        </div>
+    </form>
+{% endblock main %}
+
+{% block table1 %}
+{% endblock table1 %}
+
+{% block table2 %}
+{% endblock table2 %}

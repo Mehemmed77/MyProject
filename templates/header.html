@@ -1,0 +1,178 @@
+{% load static %}
+<header class="main-logo-container">
+    <div class="hamburger-container">
+        <div id="hamburger-modal">
+            <div class="modal-header flex">
+                <img
+                width="45"
+                height="45"
+                src="{% static 'images/logo2.svg' %}" 
+                alt="Logo"
+                class="logo2">
+
+                <a href="#" class="main-link">
+                    OwnzYou.com
+                </a>
+            </div>
+            
+        </div>
+
+        <i id="trigger" class="fa-solid fa-bars hamburger"></i>
+    </div>
+
+    <div class="inner-logo flex">
+        
+        <a href="#" id="main-logo">
+            <img src="{% static 'images/ownzyou-min.png' %}" 
+            alt="Main Logo"
+            height="45" width="190">
+        </a>
+
+        {% if user.is_authenticated %}
+
+            <div>
+                <a href="{% url 'logout' %}">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+
+        {% endif %}
+
+    </div>
+    
+</header>
+
+<nav id="nav-container">
+    <ul class="nav flex">
+        <li class="nav-item">
+            <a href="{% url 'index' %}" class="flex">
+                <div class="flex">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Dashboard</span>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="{% url 'report' %}" class="flex">
+                <div class="flex">
+                    <i class="fa-solid fa-square-plus"></i>
+                    <span>Report Site</span>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="{% url 'archive' %}" class="flex">
+                <div class="flex">
+                    <i class="fa-solid fa-inbox"></i>
+                    <span>OnHold</span>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="{% url 'special' %}" class="flex">
+                <div class="flex">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                    <span>Specials</span>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="{% url 'attacker' %}" class="flex">
+                <div class="flex">
+                    <i class="fa-solid fa-users"></i>
+                    <span>Activist/ Hackers</span>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="{% url 'top' %}" class="flex">
+                <div class="flex">
+                    <i class="fa-solid fa-arrow-up-right-dots"></i>
+                    <span>Top 20</span>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="{% url 'blog' %}" class="flex">
+                <div class="flex">
+                    <i class="fa-solid fa-file-lines"></i>
+                    <span>Blog</span>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="{% url 'contact' %}" class="flex">
+                <div class="flex">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>Contact/ Abuse</span>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </a>
+        </li>
+
+        {% if user.is_authenticated  %}
+
+        <li class="nav-item">
+            <a href="{% url 'profile' user.id %}" class="flex">
+                <div class="flex">
+                    <i class="fa-regular fa-id-card"></i>
+                    <span>Profile</span>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="{% url 'settings' user.id %}" class="flex">
+                <div class="flex">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Settings</span>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </a>
+        </li>
+
+        {% else %}
+
+        <li class="nav-item">
+            <a href="{% url 'register' %}" class="flex">
+                <div class="flex">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Register</span>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="{% url 'login' %}" class="flex">
+                <div class="flex">
+                    <i class="fa-solid fa-user"></i>
+                    <span>Login</span>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </a>
+        </li>
+
+        {% endif %}
+
+    </ul>
+</nav>

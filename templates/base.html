@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="icon" type="image/x-icon" href="{% static 'images/logo2.svg' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/icons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/hamburger.css' %}">
+    <link rel="stylesheet" href="{% static 'css/form.css' %}">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/table.css' %}">
+    <script src="https://kit.fontawesome.com/39b4b21fe7.js" crossorigin="anonymous"></script>
+    <title>OwnzYou</title>
+
+    {% block style %}
+    {% endblock style %}
+</head>
+<body>
+    
+    {% include 'header.html' %}
+
+    <main class="main">
+
+        {% block main %}
+        {% endblock main %}
+
+        {% block table1 %}
+            {% include 'table1.html' %}
+        {% endblock table1 %}
+
+        {% block table2 %}
+            {% include 'table2.html' %}
+        {% endblock table2 %}
+
+    </main>
+
+    {% include 'footer.html' %}
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="{% static 'js/hamburger.js' %}"></script>
+    <script src="{% static 'js/active.js' %}"></script>
+
+    {% block js %}
+    {% endblock js %}
+</body>
+</html>

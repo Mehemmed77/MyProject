@@ -1,0 +1,177 @@
+/** My Imports start */
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+/** My Imports End   */
+
+
+/** MY VARIABLES START --------------------------------------------- */
+
+:root{
+    --main-font: 'Quicksand', sans-serif;
+    --my-margin-inline: 2.5rem;
+    --my-border-radius: 7px;
+    
+    --light-cyan-color: #22b1a2;
+    --border-color: #293349b6;
+    --dark-blue-color: #0e1d31;
+}
+
+/** MY VARIABLES END ----------------------------------------------- */
+
+/** ------------------- BASIC SETUP START -------------------------- */
+*,*::before,*::after{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+*::selection{
+    color:#1b55e2;
+}
+
+html{
+    font-family: var(--main-font) !important;
+    letter-spacing: 0.0312rem;
+    scroll-padding-top: 2em;
+}
+
+body{
+    background-color: hsl(235, 37%, 7%) !important;
+}
+
+img{
+    max-width: 100%;
+}
+
+.flex{
+    display:flex;
+}
+
+ul{
+    list-style-type: none;
+}
+
+a{
+    color:inherit !important;
+    text-decoration: none !important;
+}
+
+a:hover{
+    color:inherit ;
+}
+
+p{
+    margin-bottom:0;
+}
+
+header,
+.main-nav-item a,
+.images-container,
+.entry-search-container
+{
+    align-items: center;
+}
+
+.entry-search-container span,
+.search span,
+.search-input::placeholder,
+.showing
+{
+    font-weight: 600;
+}
+
+/** ------------------- BASIC SETUP END ----------------------------- */
+
+/** MAIN STYLE/DESIGN START ----------------------------------------- */
+
+.main{
+    margin:1em var(--my-margin-inline);
+}
+
+/** MAIN STYLE/DESIGN END ------------------------------------------- */
+
+/** INFO STYLE/DESIGN START ----------------------------------------- */
+
+.info{
+    display:grid;
+    gap: 40px;
+    grid-template-columns: repeat(4,1fr);
+}
+
+.info-content{
+    color:white;
+    background-color: #13233d;
+    box-shadow: 0 6px 10px 0 rgba(0,0,0,.14), 
+    0 1px 18px 0 rgba(0,0,0,.12), 
+    0 3px 5px -1px rgba(0,0,0,.2);
+
+    border-radius: var(--my-border-radius);
+    padding:10px;
+}
+
+.info-count{
+    font-weight: 700;
+    color:#e0e6ed;
+    font-size:21px;
+}
+
+.info-title{
+    line-height: 1.2;
+    font-weight: 500;
+    color: #888ea8;
+    font-size:15px;
+}
+
+/** INFO STYLE/DESIGN END ------------------------------------------- */
+
+/** IMAGES CONTAINER STYLE/DESIGN START ----------------------------- */
+
+.images-container{
+    margin-top:30px;
+    gap:15px;
+    justify-content: space-between;
+}
+
+/** IMAGES CONTAINER STYLE/DESIGN END ------------------------------- */
+
+
+@media screen and (max-width:900px){
+    .info{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media screen and (max-width:758px){
+    .info{
+        grid-template-columns: 1fr;
+        position: relative;
+    }
+
+    .images-container{
+        flex-direction: column;
+    }
+
+    .hamburger-container{
+        display: block !important;
+    }
+
+    header{
+        display: flex;
+        position: fixed;
+        top:0;
+        background-color: var(--dark-blue-color);
+        z-index: 2;
+    }
+
+    /* #nav-container{
+        display: none;
+    } */
+
+    .main{
+        margin:6em 1.5rem !important;
+    }
+
+}
+
+/** MEDIA END ------------------------------------------------------- */ 

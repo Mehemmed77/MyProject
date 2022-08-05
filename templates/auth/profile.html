@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock style %}
+
+{% block main %}
+
+<div class="main-container flex">
+    <div class="profile-image-container">
+        <div class="image-container flex">
+            <p class="info-text">{{ profile_user.username|title }}'s Image <i class="fa-solid fa-file-image"></i></p>
+            <img src="{{ profile_user.image.url }}" alt="User's Image" width="320" height="250">
+            <p class="user-name">{{ profile_user.username }}</p>
+            <p>Activist/ Hacker <i class="fa-solid fa-hat-cowboy"></i></p>
+        </div>
+    </div>
+
+    <div class="information-wrapper flex">
+
+        <div class="information">
+
+            <span class="main-title">
+                <i class="fa-solid fa-circle-info"></i>
+                Information
+            </span>
+            <hr>
+
+            <div class="text-wrapper">
+                <div>
+                    <p class="white-text">Username:</p>
+                    <p class="green-text">{{ profile_user.username }}</p>
+                </div>
+
+                <div>
+                    <p class="white-text">Bio:</p>
+                    <p class="green-text">{{ profile_user.bio }}</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="information">
+
+            <span class="main-title">
+                <i class="fa-solid fa-arrow-up-right-dots"></i>
+                Statistics
+            </span>
+            <hr>
+
+            <div class="text-wrapper">
+
+                <div>
+                    <p class="white-text">Attacker Point:</p>
+                    <p class="green-text">95</p>
+                </div>
+
+                <div>
+                    <p class="white-text">Total Mirror:</p>
+                    <p class="green-text">54</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock main %}
+
+{% block table1 %}
+{% endblock table1 %}
+
+{% block table2 %}
+{% endblock table2 %}
