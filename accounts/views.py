@@ -3,7 +3,7 @@ from django.shortcuts import redirect, render
 from django.contrib.auth import login
 from django.urls import reverse_lazy
 from django.views.generic import DetailView,UpdateView
-from django.contrib.auth.views import PasswordChangeView,PasswordResetConfirmView
+from django.contrib.auth.views import PasswordChangeView,PasswordResetConfirmView,LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView
 from django.contrib.auth.hashers import check_password
@@ -14,42 +14,24 @@ from django.utils.crypto import get_random_string
 # FORMS ------------
 from accounts.forms import RegisterForm,LoginForm,SettingsForm,PasswordChangeForm,TypeEmailForm,SetPassword_Form
 
-def login_view(request:HttpRequest):
-    password_error = None
+class MyLoginView(LoginView):
+    template_name = 'auth/login.html'
+    form_class = LoginForm
 
-    next = request.GET.get('next')
+    def dispatch(self, request: HttpRequest, *args: tuple, **kwargs: dict):
+        if request.user.is_authenticated:
+            return redirect('index')
 
-    if request.method=='POST':
-        form = LoginForm(request.POST)
+        return super().dispatch(request, *args, **kwargs)
 
-        if form.is_valid():
-            email = request.POST.get('email')
-            password = request.POST.get('password')
+    def form_invalid(self, form) -> HttpResponse:
+        form.add_error(None,'Password or Username is incorrect.')
 
-            user = User.objects.filter(email = email).first()
+        next = self.request.GET.get('next')
+        if next:
+            self.request.GET.next = next
 
-            if user:
-                main_password = user.password
-                if check_password(password,main_password):
-                    login(request,user)
-
-                    if next:
-                        return redirect(next)
-
-                    return redirect('index')
-            
-            else:
-                if next:
-                    request.GET.next = next
-
-            password_error = 'Password or email address is incorrect.'
-
-    else:
-        form = LoginForm()
-
-    context = {'form':form,'password_error':password_error}
-
-    return render(request,'auth/login.html',context)
+        return super().form_invalid(form)
 
 class RegisterView(CreateView):
     template_name = 'auth/register.html'
@@ -67,12 +49,12 @@ class RegisterView(CreateView):
 
         return redirect('index')
 
-class ProfileView(DetailView,LoginRequiredMixin):
+class ProfileView(LoginRequiredMixin,DetailView):
     template_name = 'auth/profile.html'
     model = User
     context_object_name = 'profile_user'
 
-class SettingsView(UpdateView):
+class SettingsView(LoginRequiredMixin,UpdateView):
     template_name = 'auth/settings.html'
     model = User
     form_class = SettingsForm
@@ -85,6 +67,11 @@ class SettingsView(UpdateView):
         return super().dispatch(request, *args, **kwargs)
 
     def form_invalid(self, form) -> HttpResponse:
+        errors = form.errors.as_data()
+        
+        for i in errors:
+            errors[i] = list(list(errors[i])[0])[0]
+
         image = self.request.FILES.get('image')
         if image is not None:
             self.request.user.image = image
@@ -92,41 +79,43 @@ class SettingsView(UpdateView):
 
         copy_version = self.request.POST.copy()
         copy_version['username'] = self.request.user.username
+        copy_version['email'] = self.request.user.email
+        copy_version['bio'] = self.request.user.bio
 
         form = SettingsForm(copy_version,instance = self.request.user)
 
-        return render(self.request,self.template_name,{'form':form})
+        return render(self.request,self.template_name,{'form':form,'form_errors':errors})
 
     def get_success_url(self) -> str:
         return reverse_lazy('settings',kwargs = {'pk':self.request.user.id})
 
-def settings_view(request: HttpRequest):
+# def settings_view(request: HttpRequest):
 
-    instance = request.user
+#     instance = request.user
 
-    if request.method == 'POST':
-        form = SettingsForm(request.POST,instance = instance)
+#     if request.method == 'POST':
+#         form = SettingsForm(request.POST,instance = instance)
 
-        image = request.FILES.get('image')
+#         image = request.FILES.get('image')
 
-        if image:
-            request.user.image = image
-            request.user.save()
+#         if image:
+#             request.user.image = image
+#             request.user.save()
 
-        if form.is_valid():
-            form.save()
+#         if form.is_valid():
+#             form.save()
 
-        else:
-            copy_version = request.POST.copy()
-            copy_version['username'] = request.user
-            form.data = copy_version
+#         else:
+#             copy_version = request.POST.copy()
+#             copy_version['username'] = request.user
+#             form.data = copy_version
 
-    else:
-        form = SettingsForm(instance = instance)
+#     else:
+#         form = SettingsForm(instance = instance)
 
-    context = {'form':form}
+#     context = {'form':form}
 
-    return render(request,'auth/settings.html',context = context)
+#     return render(request,'auth/settings.html',context = context)
 
 
 class Change_Password(PasswordChangeView,LoginRequiredMixin):
@@ -196,10 +185,10 @@ def digit_confirmation_view(request: HttpRequest):
             request.session['error_msg'] = error_msg
             request.session['attempts'] += 1
             
-            if request.session['attempts'] == 4:
+            if request.session['attempts'] == 3:
                 request.session.clear()
 
-                return redirect('index')
+                return redirect('set-password-error')
 
     context = {'error_msg':error_msg}
 
@@ -218,7 +207,7 @@ def set_password(request: HttpRequest,token: str):
             form.save()
 
             login(request,user)
-            request.session.pop('email')
+            request.session.clear()
 
             return redirect('set-password-success')
 
@@ -231,3 +220,6 @@ def set_password(request: HttpRequest,token: str):
 
 def set_password_success(request: HttpRequest):
     return render(request,'auth/setpassword-success.html')
+
+def set_password_error(request: HttpRequest):
+    return render(request,'auth/setpassword-error.html')

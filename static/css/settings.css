@@ -56,7 +56,16 @@ label{
     margin-bottom:5px;
 }
 
-.innput-container input{
+.input-container{
+    gap:30px;
+    max-width:350px;
+}
+
+.errorlist{
+    margin-top:10px;
+}
+
+.input-container input{
     width:100%;
 }
 

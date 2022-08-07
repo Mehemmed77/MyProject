@@ -8,8 +8,7 @@
 {% block main %}
 <form action="{% url 'settings' user.id %}" class="main-form flex" enctype="multipart/form-data" method="post">
     {% csrf_token %}
-    <div class="profile-image-container">
-        
+    <div class="profile-image-container">        
         {{ form.image }}
 
         <div class="flex labels-container">
@@ -18,6 +17,13 @@
                 <img src="{{ user.image.url }}" alt="your image" class="profile-image" 
                 width="250" height="250">
             </label>
+
+            {% if form_errors.image %}
+                <dic class="errorlist">
+                    {{ form_errors.image }}
+                </dic>
+            {% endif %}
+            
             <label for="id_image" class="image-trigger">
                 <p class="blue-link-text">Tap To Change Profile Picture</p>
             </label>
@@ -39,6 +45,12 @@
 
                 <!-- <input type="text" class="form-control" placeholder="Name" aria-label="Username" aria-describedby="addon-wrapping"> -->
             </div>
+
+                {% if form_errors.username %}
+                    <div class="errorlist">
+                        {{ form_errors.username }}
+                    </div>
+                {% endif %}
         </div>
 
         <div>
@@ -52,6 +64,13 @@
 
                 <!-- <input type="text" class="form-control" placeholder="Name" aria-label="Username" aria-describedby="addon-wrapping"> -->
             </div>
+
+            {% if form_errors.bio %}
+                <div class="errorlist">
+                    {{ form_errors.bio }}
+                </div>
+            {% endif %}
+
         </div>
 
         <div>
@@ -81,13 +100,6 @@
 
 </form>
 {% endblock main %}
-
-{% block table1 %}
-{% endblock table1 %}
-
-{% block table2 %}
-{% endblock table2 %}
-
 
 {% block js %}
 

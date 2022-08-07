@@ -19,7 +19,7 @@
                 {% if field.name != 'password2' %}
                     <label class="input-label">Your {{ field.name }}</label>
                 {% else %}
-                    <label class="input-label">Confirm your {{ field.name }}</label>
+                    <label class="input-label">Confirm your password</label>
                 {% endif %}
 
                 <div class="input-group mb-3">
@@ -43,7 +43,7 @@
                 Register
             </button>
             <span class="remind">Already Have An Account? Click
-                <a href="{% url 'login' %}" id="page-link">This Link To Login</a>
+                <a href="{% url 'login' %}" class="page-link">This Link To Login</a>
             </span>
         </div>
     
@@ -52,8 +52,4 @@
 
 {% endblock main %}
 
-{% block table1 %}
-{% endblock table1 %}
 
-{% block table2 %}
-{% endblock table2 %}

@@ -169,7 +169,11 @@ header,
     } */
 
     .main{
-        margin:6em 1.5rem !important;
+        margin:6em 1.5rem 1em 1.5em !important;
+    }
+
+    footer{
+        margin-inline: 1.5em;
     }
 
 }
